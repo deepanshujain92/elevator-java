@@ -1,4 +1,5 @@
 
+
 public class EventBarrier extends AbstractEventBarrier {
 
 	private volatile boolean isSignaled;
@@ -49,7 +50,7 @@ public class EventBarrier extends AbstractEventBarrier {
 		numWaiters--;
 		notifyAll();
 		//wait for all workers to complete
-		while (!isSignaled) {
+		while (isSignaled) {
 			this.wait();
 		}
 		
