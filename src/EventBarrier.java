@@ -1,9 +1,13 @@
 
 public class EventBarrier extends AbstractEventBarrier {
 
+	private volatile boolean _isSignaled;
+	private int _numWorkers;
 	
 	public EventBarrier(int numWorkers) {
-		super(numWorkers);
+		super(_numWorkers);
+		_isSignaled = false;
+		_numWorkers = numWorkers;
 	}
 
 	@Override
