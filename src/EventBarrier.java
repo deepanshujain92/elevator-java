@@ -1,30 +1,45 @@
 
 public class EventBarrier extends AbstractEventBarrier {
 
-	private volatile boolean _isSignaled;
+	private volatile boolean isSignaled;
 	private int _numWorkers;
 	
 	public EventBarrier(int numWorkers) {
-		super(_numWorkers);
-		_isSignaled = false;
+		super(numWorkers);
+		isSignaled = false;
 		_numWorkers = numWorkers;
-	}
-
-	@Override
-	public void arrive() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void raise() {
+	public synchronized void arrive() throws InterruptedException {
 		// TODO Auto-generated method stub
-		
+		if (isSignaled) {
+			// no need to wait, just continue
+			// numWaiters++ or numWaiters--
+		}
+		else {
+			//numWaiters++ or numWaiters--
+			//wait
+			while (!isSignaled) {
+				this.wait();
+			}
+		}
 	}
 
 	@Override
-	public void complete() {
+	public synchronized void raise() throws InterruptedException {
 		// TODO Auto-generated method stub
+		// notifyAll();
+		// wait for all workers to complete?
+
+	}
+
+	@Override
+	public synchronized void complete() throws InterruptedException {
+		// TODO Auto-generated method stub
+		//notify the producer that you have ... the bridge
+		//wait for all workers to complete
 		
 	}
 
