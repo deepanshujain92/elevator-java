@@ -16,13 +16,15 @@ public class EventBarrier extends AbstractEventBarrier {
 
 	@Override
 	public synchronized void arrive() throws InterruptedException {
-		// TODO Auto-generated method stub
+		
+		numWaiters++; //whether or not the thread blocks
+		
 		if (isSignaled) {
 			// no need to wait, just continue
-			// numWaiters++;
+			return;
 		}
 		else {
-			numWaiters++;
+			
 			//wait
 			while (!isSignaled) {
 				this.wait();
