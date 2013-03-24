@@ -29,6 +29,8 @@ public class Minstrel implements Runnable {
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Minstrel completed");
 	}
 
 }

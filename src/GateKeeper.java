@@ -17,13 +17,14 @@ public class GateKeeper implements Runnable {
 			e1.printStackTrace();
 		}
 		try {
-			barrier.signal();
+			barrier.raise();
 		//	barrier.notify();
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		barrier.notifyAll(); // wake up sleeping minstrels
+		System.out.println("Raise() function returned for gatekeeper");
+		//barrier.notifyAll(); // wake up sleeping minstrels
 	}
 
 }
