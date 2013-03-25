@@ -6,6 +6,8 @@ public class EventBarrierTester {
 	
 	public static void main(String args[]) {
 		
+		System.out.println(System.getProperty("java.runtime.version"));
+		
 		numWorkers = 10;
 		EventBarrier bridge = new EventBarrier ();
 		
