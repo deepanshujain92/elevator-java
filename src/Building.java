@@ -13,7 +13,9 @@ public class Building extends AbstractBuilding {
 		ExitBarriers = new EventBarrier[numFloors][numElevators];
 		
 		for (int i = 0; i<numFloors; i++){
-			
+			for (int j = 0; j<numElevators; j++){
+				UpCalls[i][j] = new EventBarrier();
+			}
 		}
 		
 	}

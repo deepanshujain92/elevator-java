@@ -7,7 +7,7 @@ public class EventBarrierTester {
 	public static void main(String args[]) {
 		
 		numWorkers = 10;
-		EventBarrier bridge = new EventBarrier (numWorkers);
+		EventBarrier bridge = new EventBarrier ();
 		
 		// set up minstrel threads
 		for (int i = 0; i < numWorkers; i++) {
