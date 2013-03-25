@@ -11,8 +11,8 @@ public abstract class AbstractEventBarrier {
 	 * At minimum, the constructor should at least take one argument,
  	 * which is the number of worker threads.
  	 */
-	public AbstractEventBarrier(int numWorkers) {
-		_numWorkers = numWorkers;
+	public AbstractEventBarrier() {
+		//_numWorkers = numWorkers;
 		
 	}
 

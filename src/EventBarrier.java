@@ -6,10 +6,10 @@ public class EventBarrier extends AbstractEventBarrier {
 	private int _numWorkers;
 	private int numWaiters;
 	
-	public EventBarrier(int numWorkers) {
-		super(numWorkers);
+	public EventBarrier() {
+		super();
 		isSignaled = false;
-		_numWorkers = numWorkers;
+		//_numWorkers = numWorkers;
 		numWaiters = 0;
 		
 	}
