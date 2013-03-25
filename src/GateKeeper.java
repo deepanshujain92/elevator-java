@@ -20,7 +20,7 @@ public class GateKeeper implements Runnable {
 			barrier.raise();
 		//	barrier.notify();
 		}
-		catch (InterruptedException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println("Raise() function returned for gatekeeper");
