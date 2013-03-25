@@ -15,7 +15,7 @@ public class EventBarrier extends AbstractEventBarrier {
 	}
 
 	@Override
-	public synchronized void arrive() throws InterruptedException {
+	public synchronized void arrive() {
 		
 		numWaiters++; //whether or not the thread blocks
 		
@@ -27,19 +27,27 @@ public class EventBarrier extends AbstractEventBarrier {
 			
 			//wait
 			while (!isSignaled) {
-				this.wait();
+				try {
+					this.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
 
 	@Override
-	public synchronized void raise() throws InterruptedException {
+	public synchronized void raise(){
 		// TODO Auto-generated method stub
 		isSignaled = true;
 		notifyAll();
 		// wait for all workers to complete?
 		while (waiters() > 0) {
-			this.wait(); // wakes up when workers have completed 
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} // wakes up when workers have completed 
 		}
 		isSignaled = false;
 		notifyAll(); // lets completed threads know to continue
@@ -54,9 +62,7 @@ public class EventBarrier extends AbstractEventBarrier {
 		//wait for all workers to complete
 		while (isSignaled) {
 			this.wait();
-		}
-		
-		
+		}	
 	}
 
 	@Override
