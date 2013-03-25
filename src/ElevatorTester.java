@@ -22,6 +22,11 @@ public class ElevatorTester {
 
 		Path path = Paths.get(inputFileName);
 		try (Scanner scanner = new Scanner(path)) {
+			String firstLine = scanner.nextLine();
+			String[] BuildingParams = firstLine.split(" ");
+			Building building = new Building(
+					Integer.parseInt(BuildingParams[0]),
+					Integer.parseInt(BuildingParams[1]));
 			while (scanner.hasNextLine()) {
 				String info = scanner.nextLine();
 				String[] elevatorParams = info.split(" ");

@@ -1,6 +1,10 @@
 
 public class Elevator extends AbstractElevator {
 
+	private EventBarrier[] UpCalls;
+	private EventBarrier[] DownCalls;
+	private EventBarrier[][] ExitBarriers;
+	
 	public Elevator(int numFloors, int elevatorId, int maxOccupancyThreshold) {
 		super(numFloors, elevatorId, maxOccupancyThreshold);
 		// TODO Auto-generated constructor stub
@@ -40,6 +44,12 @@ public class Elevator extends AbstractElevator {
 	public void RequestFloor(int floor) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void setBarriers(EventBarrier[] Up, EventBarrier[] Down, EventBarrier[][] Exits){
+		UpCalls = Up;
+		DownCalls = Down;
+		ExitBarriers = Exits;
 	}
 
 }

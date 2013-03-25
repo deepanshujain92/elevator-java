@@ -25,14 +25,20 @@ public class Building extends AbstractBuilding {
 
 	@Override
 	public void CallUp(int fromFloor) {
-		// TODO Auto-generated method stub
+		UpCalls[fromFloor].arrive();
 
 	}
 
 	@Override
 	public void CallDown(int fromFloor) {
-		// TODO Auto-generated method stub
-
+		DownCalls[fromFloor].arrive();
 	}
+	
+	public void setBarriers(EventBarrier[] Up, EventBarrier[] Down, EventBarrier[][] Exits){
+		UpCalls = Up;
+		DownCalls = Down;
+		ExitBarriers = Exits;
+	}
+
 
 }
