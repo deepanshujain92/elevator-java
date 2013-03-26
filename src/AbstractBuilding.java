@@ -19,10 +19,10 @@ public abstract class AbstractBuilding {
  	 */
 
 	/* Signal the elevator that we want to go up */
-	public abstract void CallUp(int fromFloor);
+	public abstract Elevator CallUp(int fromFloor);
 
 	/* Signal the elevator that we want to go down */
-	public abstract void CallDown(int fromFloor); 
+	public abstract Elevator CallDown(int fromFloor); 
 
 	/* Other methods as needed goes here */
 }

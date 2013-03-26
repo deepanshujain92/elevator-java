@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 
 public class Building extends AbstractBuilding {
 
 	private EventBarrier[] UpCalls;
 	private EventBarrier[] DownCalls;
 	private EventBarrier[][] ExitBarriers;
+	
+	private ArrayList<ArrayList<Rider>> Riders;
 
 	
 	public Building(int numFloors, int numElevators) {
@@ -12,10 +15,13 @@ public class Building extends AbstractBuilding {
 		UpCalls = new EventBarrier[numFloors];
 		DownCalls = new EventBarrier[numFloors];
 		ExitBarriers = new EventBarrier[numFloors][numElevators];
+		Riders = new ArrayList<>();
 		
 		for (int i = 0; i<numFloors; i++){
 			UpCalls[i] = new EventBarrier();
 			DownCalls[i] = new EventBarrier();
+			
+			Riders.add(new ArrayList<Rider>());
 			for (int j = 0; j<numElevators; j++){
 
 				ExitBarriers[i][j] = new EventBarrier();
@@ -25,14 +31,16 @@ public class Building extends AbstractBuilding {
 	}
 
 	@Override
-	public void CallUp(int fromFloor) {
+	public Elevator CallUp(int fromFloor) {
+		
 		UpCalls[fromFloor].arrive();
+		
 		//after returns, 
 
 	}
 
 	@Override
-	public void CallDown(int fromFloor) {
+	public Elevator CallDown(int fromFloor) {
 		DownCalls[fromFloor].arrive();
 	}
 	
@@ -43,4 +51,7 @@ public class Building extends AbstractBuilding {
 	}
 
 
+	public void elevatorArrive(Elevator elevator, int floor){
+		
+	}
 }
