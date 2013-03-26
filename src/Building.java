@@ -4,6 +4,7 @@ public class Building extends AbstractBuilding {
 	private EventBarrier[] UpCalls;
 	private EventBarrier[] DownCalls;
 	private EventBarrier[][] ExitBarriers;
+
 	
 	public Building(int numFloors, int numElevators) {
 		super(numFloors, numElevators);
@@ -26,6 +27,7 @@ public class Building extends AbstractBuilding {
 	@Override
 	public void CallUp(int fromFloor) {
 		UpCalls[fromFloor].arrive();
+		//after returns, 
 
 	}
 

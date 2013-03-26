@@ -1,5 +1,5 @@
 
-public class Elevator extends AbstractElevator {
+public class Elevator extends AbstractElevator implements Runnable {
 
 	private EventBarrier[] UpCalls;
 	private EventBarrier[] DownCalls;
@@ -9,6 +9,7 @@ public class Elevator extends AbstractElevator {
 	private boolean goingUp;
 	private int currentOccupancy;
 	private EventBarrier currEntryBarrier;
+	private boolean doorsOpen;
 	
 	public Elevator(int numFloors, int elevatorId, int maxOccupancyThreshold) {
 		super(numFloors, elevatorId, maxOccupancyThreshold);
@@ -23,12 +24,14 @@ public class Elevator extends AbstractElevator {
 			goingUp = false;
 		}
 		
+		doorsOpen = false;
 		currentOccupancy = 0;
 	}
 
 	@Override
 	public void OpenDoors() {
 		// TODO Auto-generated method stub
+		doorsOpen = true;
 		ExitBarriers[currentFloor][_elevatorId].raise();
 		currEntryBarrier.raise();
 	}
@@ -36,6 +39,7 @@ public class Elevator extends AbstractElevator {
 	@Override
 	public void CloseDoors() {
 		// TODO Auto-generated method stub
+		doorsOpen = false;
 
 	}
 
@@ -93,10 +97,21 @@ public class Elevator extends AbstractElevator {
 
 	}
 	
+	public boolean areDoorsOpen(){
+		return doorsOpen;
+	}
+	
 	public void setBarriers(EventBarrier[] Up, EventBarrier[] Down, EventBarrier[][] Exits){
 		UpCalls = Up;
 		DownCalls = Down;
 		ExitBarriers = Exits;
+	}
+	
+	@Override
+	public void run(){
+		while (goingUp && currentFloor < _numFloors){
+			VisitFloor(currentFloor+1);
+		}
 	}
 
 }
