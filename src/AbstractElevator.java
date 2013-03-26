@@ -25,7 +25,7 @@ public abstract class AbstractElevator {
 	 * When capacity is reached or the outgoing riders are exited and
 	 * incoming riders are in. 
  	 */
-	public abstract void ClosedDoors();
+	public abstract void CloseDoors();
 
 	/* Go to a requested floor */
 	public abstract void VisitFloor(int floor);
