@@ -5,9 +5,17 @@ public class Elevator extends AbstractElevator {
 	private EventBarrier[] DownCalls;
 	private EventBarrier[][] ExitBarriers;
 	
+	private int currentFloor;
+	private int numFloors;
+	private int maxOccupancy;
+	private boolean goingUp;
+	
 	public Elevator(int numFloors, int elevatorId, int maxOccupancyThreshold) {
 		super(numFloors, elevatorId, maxOccupancyThreshold);
 		// TODO Auto-generated constructor stub
+		
+		
+		
 	}
 
 	@Override
