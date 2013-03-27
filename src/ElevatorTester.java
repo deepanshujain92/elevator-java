@@ -19,7 +19,9 @@ public class ElevatorTester {
 
 		// take input file and create elevator/rider threads out of it
 		logger.info("Writing to a log file, nbd");
-
+		
+		new ElevatorTester("src/elevatorTestInput.txt");
+		
 		Path path = Paths.get(inputFileName);
 		try (Scanner scanner = new Scanner(path)) {
 			String firstLine = scanner.nextLine();
