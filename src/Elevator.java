@@ -1,3 +1,7 @@
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class Elevator extends AbstractElevator implements Runnable {
 
@@ -10,6 +14,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 	private int currentOccupancy;
 	private EventBarrier currEntryBarrier;
 	private boolean doorsOpen;
+	private Logger logger;
 	
 	public Elevator(int numFloors, int elevatorId, int maxOccupancyThreshold) {
 		super(numFloors, elevatorId, maxOccupancyThreshold);
@@ -52,6 +57,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 		else {
 			currEntryBarrier = DownCalls[currentFloor];
 		}
+		logger.log(Level.INFO, "Elevator at floor %d", floor);
 		OpenDoors();
 		CloseDoors();
 	}
@@ -93,7 +99,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 	public void RequestFloor(int floor) {
 		// TODO Auto-generated method stub
 		ExitBarriers[floor][_elevatorId].arrive();
-
+		logger.log(Level.INFO, "Floor %d requested in Elevator", floor);
 	}
 	
 	public boolean areDoorsOpen(){
@@ -111,6 +117,10 @@ public class Elevator extends AbstractElevator implements Runnable {
 		while (goingUp && currentFloor < _numFloors){
 			VisitFloor(currentFloor+1);
 		}
+	}
+
+	public void setLogger(Logger l) {
+		logger = l;
 	}
 
 }

@@ -8,7 +8,6 @@ public class Building extends AbstractBuilding {
 	
 	private ArrayList<ArrayList<Rider>> Riders;
 
-	
 	public Building(int numFloors, int numElevators) {
 		super(numFloors, numElevators);
 		UpCalls = new EventBarrier[numFloors];

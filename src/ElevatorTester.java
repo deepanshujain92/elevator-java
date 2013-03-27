@@ -6,35 +6,35 @@ import java.util.logging.*;
 
 public class ElevatorTester {
 
-	private static String inputFileName;
 	// use for logging errors, maybe when elevators leave floors and with how
 	// many riders?
-	private static Logger logger = Logger.getLogger("Elevator");
+	private Logger logger = Logger.getLogger("Elevator");
+	
+	private volatile boolean isDone;
 
 	public ElevatorTester(String filename) {
-		inputFileName = filename;
-	}
-
-	public static void main(String args[]) {
+		Path path = Paths.get(filename);
+		isDone = false;
 
 		// take input file and create elevator/rider threads out of it
-		logger.info("Writing to a log file, nbd");
-		
-		new ElevatorTester("src/elevatorTestInput.txt");
-		
-		Path path = Paths.get(inputFileName);
 		try (Scanner scanner = new Scanner(path)) {
 			String firstLine = scanner.nextLine();
 			String[] BuildingParams = firstLine.split(" ");
+			// first line is # floors, # elevators, total # of riders (?), max #
+			// riders in an elevator
 			Building building = new Building(
 					Integer.parseInt(BuildingParams[0]),
 					Integer.parseInt(BuildingParams[1]));
+			logger.info("building made");
 			for (int i = 0; i < Integer.parseInt(BuildingParams[1]); i++) {
 				Elevator elevator = new Elevator(
 						Integer.parseInt(BuildingParams[0]), i,
 						Integer.parseInt(BuildingParams[3]));
+				elevator.setLogger(logger);
 				new Thread(elevator).start();
 			}
+			logger.info("elevators made and started");
+			// line is riderID, floor it's on, floor it wants to go to
 			while (scanner.hasNextLine()) {
 				String info = scanner.nextLine();
 				String[] riderParams = info.split(" ");
@@ -42,15 +42,31 @@ public class ElevatorTester {
 						Integer.parseInt(riderParams[0]),
 						Integer.parseInt(riderParams[1]),
 						Integer.parseInt(riderParams[2]));
+				rider.setLogger(logger);
 				new Thread(rider).start();
 			}
+			logger.info("riders made and started");
+
+			//while (!isDone) {
+				//this.wait();
+			//}
 			
 			// at this point, building AND elevators AND riders are set up
-			
+
 		} catch (IOException e) {
 			logger.info("File not found");
-			e.printStackTrace();
-		}
+			e.printStackTrace(); }
+//		} catch (InterruptedException e) {
+//			logger.info("Interruption exception");
+//			e.printStackTrace();
+//		}
+	}
+
+	public static void main(String args[]) {
+
+		// logger.info("Writing to a log file, nbd");
+
+		new ElevatorTester("src/elevatorTestInput.txt");
 
 	}
 
