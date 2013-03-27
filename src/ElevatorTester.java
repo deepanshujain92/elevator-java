@@ -27,15 +27,24 @@ public class ElevatorTester {
 			Building building = new Building(
 					Integer.parseInt(BuildingParams[0]),
 					Integer.parseInt(BuildingParams[1]));
-			while (scanner.hasNextLine()) {
-				String info = scanner.nextLine();
-				String[] elevatorParams = info.split(" ");
+			for (int i = 0; i < Integer.parseInt(BuildingParams[1]); i++) {
 				Elevator elevator = new Elevator(
-						Integer.parseInt(elevatorParams[1]),
-						Integer.parseInt(elevatorParams[2]),
-						Integer.parseInt(elevatorParams[3]));
+						Integer.parseInt(BuildingParams[0]), i,
+						Integer.parseInt(BuildingParams[3]));
 				new Thread(elevator).start();
 			}
+			while (scanner.hasNextLine()) {
+				String info = scanner.nextLine();
+				String[] riderParams = info.split(" ");
+				Rider rider = new Rider(building,
+						Integer.parseInt(riderParams[0]),
+						Integer.parseInt(riderParams[1]),
+						Integer.parseInt(riderParams[2]));
+				new Thread(rider).start();
+			}
+			
+			// at this point, building AND elevators AND riders are set up
+			
 		} catch (IOException e) {
 			logger.info("File not found");
 			e.printStackTrace();

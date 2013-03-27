@@ -45,7 +45,6 @@ public class Elevator extends AbstractElevator implements Runnable {
 
 	@Override
 	public void VisitFloor(int floor) {
-		// TODO Auto-generated method stub
 		currentFloor = floor;
 		if (goingUp){
 			currEntryBarrier = UpCalls[currentFloor];

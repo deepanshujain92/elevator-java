@@ -11,7 +11,6 @@ public class Building extends AbstractBuilding {
 	
 	public Building(int numFloors, int numElevators) {
 		super(numFloors, numElevators);
-		// TODO Auto-generated constructor stub
 		UpCalls = new EventBarrier[numFloors];
 		DownCalls = new EventBarrier[numFloors];
 		ExitBarriers = new EventBarrier[numFloors][numElevators];
@@ -34,6 +33,7 @@ public class Building extends AbstractBuilding {
 	public Elevator CallUp(int fromFloor) {
 		
 		UpCalls[fromFloor].arrive();
+		return null;
 		
 		//after returns, 
 
@@ -42,6 +42,7 @@ public class Building extends AbstractBuilding {
 	@Override
 	public Elevator CallDown(int fromFloor) {
 		DownCalls[fromFloor].arrive();
+		return null;
 	}
 	
 	public void setBarriers(EventBarrier[] Up, EventBarrier[] Down, EventBarrier[][] Exits){
