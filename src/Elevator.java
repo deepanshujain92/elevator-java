@@ -18,10 +18,9 @@ public class Elevator extends AbstractElevator implements Runnable {
 	
 	public Elevator(int numFloors, int elevatorId, int maxOccupancyThreshold) {
 		super(numFloors, elevatorId, maxOccupancyThreshold);
-		// TODO Auto-generated constructor stub
 		//if elevatorID even, start going up, if odd, start going down
 		if (_elevatorId % 2 == 0){
-			currentFloor = 0;
+			currentFloor = 1;
 			goingUp = true;
 		}
 		else {
@@ -114,13 +113,27 @@ public class Elevator extends AbstractElevator implements Runnable {
 	
 	@Override
 	public void run(){
-		while (goingUp && currentFloor < _numFloors){
-			VisitFloor(currentFloor+1);
+		// logic for knowing which floor to visit next
+		// opendoor, closedoor
+		// eventbarriers in elevator and in building
+		// logger.log(Level.INFO, "Current floor is ", currentFloor)
+		int nextFloor = 0;
+		if (goingUp && currentFloor < _numFloors | currentFloor == 1){
+			goingUp = true;
+			nextFloor = currentFloor + 1;
 		}
+		else {
+			goingUp = false;
+			nextFloor = currentFloor - 1;
+		}
+		VisitFloor(nextFloor);
 	}
 
 	public void setLogger(Logger l) {
 		logger = l;
 	}
-
+	
+	public int distFromFloor(int fromFloor) {
+		return Math.abs(fromFloor-currentFloor);
+	}
 }

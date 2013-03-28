@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.*;
 
@@ -9,7 +10,7 @@ public class ElevatorTester {
 	// use for logging errors, maybe when elevators leave floors and with how
 	// many riders?
 	private Logger logger = Logger.getLogger("Elevator");
-	
+
 	private volatile boolean isDone;
 
 	public ElevatorTester(String filename) {
@@ -28,9 +29,12 @@ public class ElevatorTester {
 			logger.info("building made");
 			for (int i = 0; i < Integer.parseInt(BuildingParams[1]); i++) {
 				Elevator elevator = new Elevator(
-						Integer.parseInt(BuildingParams[0]), i,
+						Integer.parseInt(BuildingParams[0]), i + 1,
 						Integer.parseInt(BuildingParams[3]));
 				elevator.setLogger(logger);
+				ArrayList<Elevator> e = building.getElevators();
+				e.add(elevator);
+				building.shareBarriers(elevator);
 				new Thread(elevator).start();
 			}
 			logger.info("elevators made and started");
@@ -47,19 +51,20 @@ public class ElevatorTester {
 			}
 			logger.info("riders made and started");
 
-			//while (!isDone) {
-				//this.wait();
-			//}
-			
+			// while (!isDone) {
+			// this.wait();
+			// }
+
 			// at this point, building AND elevators AND riders are set up
 
 		} catch (IOException e) {
 			logger.info("File not found");
-			e.printStackTrace(); }
-//		} catch (InterruptedException e) {
-//			logger.info("Interruption exception");
-//			e.printStackTrace();
-//		}
+			e.printStackTrace();
+		}
+		// } catch (InterruptedException e) {
+		// logger.info("Interruption exception");
+		// e.printStackTrace();
+		// }
 	}
 
 	public static void main(String args[]) {
