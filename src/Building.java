@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Building extends AbstractBuilding {
 
@@ -7,6 +9,7 @@ public class Building extends AbstractBuilding {
 	private EventBarrier[][] ExitBarriers;
 
 	private ArrayList<Elevator> myElevators;
+	private Logger logger;
 
 	private ArrayList<ArrayList<Rider>> Riders;
 	private int finishedRiders;
@@ -97,6 +100,7 @@ public class Building extends AbstractBuilding {
 		finishedRiders++;
 		if (finishedRiders == totalRiders) {
 			areRidersDone = true;
+			logger.log(Level.INFO, "Building says riders are finished");
 		}
 	}
 	
@@ -104,7 +108,9 @@ public class Building extends AbstractBuilding {
 		areRidersDone = areTheyDone;
 	}
 	
-
+	public void setLogger (Logger l) {
+		logger = l;
+	}
 
 	public void elevatorArrive(Elevator elevator, int floor) {
 

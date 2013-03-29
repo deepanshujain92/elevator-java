@@ -9,9 +9,11 @@ public class ElevatorTester {
 
 	// use for logging errors, maybe when elevators leave floors and with how
 	// many riders?
-	private Logger logger; 
+	private Logger logger;
 
-	private volatile boolean isDone;
+	public static void main(String args[]) {
+		new ElevatorTester("src/elevatorTestInput.txt");
+	}
 
 	public ElevatorTester(String filename) {
 		Path path = Paths.get(filename);
@@ -26,8 +28,6 @@ public class ElevatorTester {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		isDone = false;
 
 		// take input file and create elevator/rider threads out of it
 		try (Scanner scanner = new Scanner(path)) {
@@ -38,6 +38,7 @@ public class ElevatorTester {
 			Building building = new Building(
 					Integer.parseInt(BuildingParams[0]),
 					Integer.parseInt(BuildingParams[1]));
+			building.setLogger(logger);
 			logger.info("building made");
 			
 			//Make Ending boolean
@@ -58,9 +59,6 @@ public class ElevatorTester {
 			}
 			logger.info("elevators made and started");
 			
-
-			
-			
 			// line is riderID, floor it's on, floor it wants to go to
 			while (scanner.hasNextLine()) {
 				String info = scanner.nextLine();
@@ -74,32 +72,11 @@ public class ElevatorTester {
 			}
 			logger.info("riders made and started");
 
-			// while (!isDone) {
-			// this.wait();
-			// }
-
-			// at this point, building AND elevators AND riders are set up
-
 		} catch (IOException e) {
 			logger.info("File not found");
 			e.printStackTrace();
 		}
-		// } catch (InterruptedException e) {
-		// logger.info("Interruption exception");
-		// e.printStackTrace();
-		// }
-	}
-
-
-
-	public static void main(String args[]) {
-
-		// logger.info("Writing to a log file, nbd");
-
-		new ElevatorTester("src/elevatorTestInput.txt");
-
-	}
-	
+	}	
 }
 
 

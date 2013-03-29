@@ -57,7 +57,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 		else {
 			currEntryBarrier = DownCalls[currentFloor];
 		}
-		logger.log(Level.INFO, "Elevator at floor {0}", floor);
+		//logger.log(Level.INFO, "Elevator at floor {0}", floor);
 		OpenDoors();
 		CloseDoors();
 	}
@@ -88,6 +88,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 		//let barrier know you've crossed
 		try {
 			ExitBarriers[currentFloor][_elevatorId].complete();
+			logger.log(Level.INFO, "Rider has exited onto floor {0}", currentFloor);
 		}
 		catch (InterruptedException e){
 			e.printStackTrace();
@@ -125,7 +126,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 		int nextFloor = 0;
 		
 		while (!areRidersDone){
-			if (goingUp && currentFloor < _numFloors | currentFloor == 0){
+			if ((goingUp && currentFloor < _numFloors-1) | currentFloor == 0){
 				goingUp = true;
 				nextFloor = currentFloor + 1;
 			}
