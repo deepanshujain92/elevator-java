@@ -100,7 +100,7 @@ public class Building extends AbstractBuilding {
 	/**
 	 * Let the building know another rider has finished
 	 */
-	public void riderFinished(){
+	public synchronized void riderFinished(){
 		finishedRiders++;
 		logger.log(Level.INFO, "Number of finished riders is {0}", finishedRiders);
 		if (finishedRiders == totalRiders) {

@@ -1,10 +1,20 @@
-Mar 28, 2013 11:58:54 PM ElevatorTester <init>
+Mar 29, 2013 12:30:19 AM ElevatorTester <init>
 INFO: building made
-Mar 28, 2013 11:58:54 PM ElevatorTester <init>
+Mar 29, 2013 12:30:19 AM ElevatorTester <init>
 INFO: elevators made and started
-Mar 28, 2013 11:58:54 PM ElevatorTester <init>
+Mar 29, 2013 12:30:19 AM ElevatorTester <init>
 INFO: riders made and started
-Mar 28, 2013 11:58:54 PM Rider callElevator
-INFO: Rider 1 is calling down
-Mar 28, 2013 11:58:54 PM Building CallDown
-INFO: Is down call being a bitch?
+Mar 29, 2013 12:30:19 AM Rider callElevator
+INFO: Rider 2 is calling up
+Mar 29, 2013 12:30:19 AM Rider callElevator
+INFO: Rider 1 is calling up
+Mar 29, 2013 12:30:19 AM Rider callElevator
+INFO: Rider 2 has called up
+Mar 29, 2013 12:30:19 AM Rider callElevator
+INFO: Rider 1 has called up
+Mar 29, 2013 12:30:19 AM Elevator RequestFloor
+INFO: Floor 2 requested in Elevator
+Mar 29, 2013 12:30:19 AM Elevator Exit
+INFO: Rider has exited onto floor 2
+Mar 29, 2013 12:30:19 AM Building riderFinished
+INFO: Number of finished riders is 1
