@@ -22,11 +22,11 @@ public class Rider implements Runnable {
 		// TODO Auto-generated method stub
 		if (startFloor > endFloor){
 			building.CallDown(startFloor);
-			logger.log(Level.INFO, "Rider %d has called down", riderID);
+			logger.log(Level.INFO, "Rider {0} has called down", riderID);
 		}
 		else{
 			building.CallUp(startFloor);
-			logger.log(Level.INFO, "Rider %d has called up", riderID);
+			logger.log(Level.INFO, "Rider {0} has called up", riderID);
 		}
 		
 		//call enter() on elevator
