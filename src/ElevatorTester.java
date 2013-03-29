@@ -9,12 +9,14 @@ public class ElevatorTester {
 
 	// use for logging errors, maybe when elevators leave floors and with how
 	// many riders?
-	private Logger logger = Logger.getLogger("Elevator");
+	private Logger logger; 
 
 	private volatile boolean isDone;
 
 	public ElevatorTester(String filename) {
 		Path path = Paths.get(filename);
+		logger = Logger.getLogger("Elevator.log");
+		
 		isDone = false;
 
 		// take input file and create elevator/rider threads out of it
@@ -29,7 +31,7 @@ public class ElevatorTester {
 			logger.info("building made");
 			for (int i = 0; i < Integer.parseInt(BuildingParams[1]); i++) {
 				Elevator elevator = new Elevator(
-						Integer.parseInt(BuildingParams[0]), i + 1,
+						Integer.parseInt(BuildingParams[0]), i,
 						Integer.parseInt(BuildingParams[3]));
 				elevator.setLogger(logger);
 				ArrayList<Elevator> e = building.getElevators();
