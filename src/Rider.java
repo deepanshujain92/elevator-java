@@ -29,6 +29,8 @@ public class Rider implements Runnable {
 			/*while(myRide.areDoorsOpen()){
 				continue;
 			}*/
+			logger.log(Level.INFO, "Rider {0} will not fit on elevator, is calling again", riderID);
+			
 			myRide = callElevator();
 		}
 		myRide.RequestFloor(endFloor);

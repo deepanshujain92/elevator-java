@@ -12,7 +12,7 @@
 
 	Name2: Jennifer Mercado
 	NetId2: jdm45
-	Time spent: not as many as Michael 
+	Time spent: almost as many as Michael 
 
 /******************
  * Files to submit
@@ -83,11 +83,24 @@ immediately). The elevator event barrier is raised first, so the first riders to
 those exiting the elevator. Once they have all exited, that raise call returns and the event 
 barrier for the floor's up or down call (whichever way the elevator is going) is raised. The 
 riders waiting to go in the elevator's current direction are allowed to enter, and that barrier
-is then lowered. 
-riders
-waiting to enter the elevator are 
+is then lowered once everyone who was waiting has gotten on. This is not the case, however, 
+when the elevator has reached capacity; when this happens and there are still riders waiting
+to board, Enter returns false and the rider calls up/down again, waiting for the next elevator.
 
-At the moment, our files are not in a jar file, and we recognize that. There's not a whole lot to execute at the moment. The final submission will be in an executable jar file.
+Multiple elevators have been a worthy opponent for us; in the code's current state, it handles
+multiple elevator scenarios on some occasions and not others. The way we attempted to 
+implement them was by changing CallUp and CallDown (in Building) to return the elevators 
+closest to the calling rider at the time of the function call. The idea was that, because
+the call to the event barrier of arrive would not return until there was an elevator at the
+floor ready for passengers, returning the elevator closest to the floor arrived at would be 
+elevator currently at the floor to pick up passengers. This is a problem when the elevator
+is going in the wrong direction and opens an eventbarrier different than the one the rider 
+is waiting at, but might fix itself when the elevator leaves and returns going in the correct
+direction. This is also a problem when two elevators are at the same floor and working
+with the same event barrier, at least that's what we think. This bug does not appear with any
+regularity, so it's hard to figure out exactly what the problem is.
+
+Also important to note is that floors and elevator indices start at 0 and go until numObject-1.
 
 /************************
  * Feedback on the lab

@@ -34,7 +34,7 @@ public class Building extends AbstractBuilding {
 				ExitBarriers[i][j] = new EventBarrier();
 			}
 		}
-		
+
 		areRidersDone = false;
 	}
 
@@ -45,7 +45,7 @@ public class Building extends AbstractBuilding {
 		return closestElevator(fromFloor);
 
 	}
-	
+
 	@Override
 	public Elevator CallDown(int fromFloor) {
 		DownCalls[fromFloor].arrive();
@@ -54,7 +54,8 @@ public class Building extends AbstractBuilding {
 
 	/**
 	 * Returns the closest elevator to a given floor
-	 * @param fromFloor 
+	 * 
+	 * @param fromFloor
 	 * @return Returns the closest elevator to a given floor
 	 */
 	private Elevator closestElevator(int fromFloor) {
@@ -73,8 +74,6 @@ public class Building extends AbstractBuilding {
 		return null;
 	}
 
-
-
 	public void setBarriers(EventBarrier[] Up, EventBarrier[] Down,
 			EventBarrier[][] Exits) {
 		UpCalls = Up;
@@ -89,30 +88,31 @@ public class Building extends AbstractBuilding {
 	public ArrayList<Elevator> getElevators() {
 		return myElevators;
 	}
-	
+
 	/**
 	 * Let's the building know how many riders must go through the building
 	 */
-	public void setTotalRiders(int totalRiders){
+	public void setTotalRiders(int totalRiders) {
 		this.totalRiders = totalRiders;
 	}
-	
+
 	/**
 	 * Let the building know another rider has finished
 	 */
-	public synchronized void riderFinished(){
+	public synchronized void riderFinished() {
 		finishedRiders++;
-		logger.log(Level.INFO, "Number of finished riders is {0}", finishedRiders);
+		logger.log(Level.INFO, "Number of finished riders is {0}",
+				finishedRiders);
 		if (finishedRiders == totalRiders) {
 			areRidersDone = true;
 			logger.log(Level.INFO, "Building says riders are finished");
-			for (Elevator e : myElevators){
+			for (Elevator e : myElevators) {
 				e.setAreRidersDone(areRidersDone);
 			}
 		}
 	}
-	
-	public void setLogger (Logger l) {
+
+	public void setLogger(Logger l) {
 		logger = l;
 	}
 

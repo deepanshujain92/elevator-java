@@ -1,20 +1,56 @@
-Mar 29, 2013 12:30:19 AM ElevatorTester <init>
+Mar 29, 2013 1:45:07 AM ElevatorTester <init>
 INFO: building made
-Mar 29, 2013 12:30:19 AM ElevatorTester <init>
+Mar 29, 2013 1:45:07 AM ElevatorTester <init>
 INFO: elevators made and started
-Mar 29, 2013 12:30:19 AM ElevatorTester <init>
+Mar 29, 2013 1:45:07 AM ElevatorTester <init>
 INFO: riders made and started
-Mar 29, 2013 12:30:19 AM Rider callElevator
+Mar 29, 2013 1:45:07 AM Rider callElevator
 INFO: Rider 2 is calling up
-Mar 29, 2013 12:30:19 AM Rider callElevator
-INFO: Rider 1 is calling up
-Mar 29, 2013 12:30:19 AM Rider callElevator
+Mar 29, 2013 1:45:07 AM Rider callElevator
 INFO: Rider 2 has called up
-Mar 29, 2013 12:30:19 AM Rider callElevator
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 3 is calling up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 5 is calling down
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 1 is calling up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 5 has called down
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 4 is calling up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 3 has called up
+Mar 29, 2013 1:45:07 AM Elevator RequestFloor
+INFO: Floor 3 requested in Elevator
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 4 has called up
+Mar 29, 2013 1:45:07 AM Rider callElevator
 INFO: Rider 1 has called up
-Mar 29, 2013 12:30:19 AM Elevator RequestFloor
-INFO: Floor 2 requested in Elevator
-Mar 29, 2013 12:30:19 AM Elevator Exit
-INFO: Rider has exited onto floor 2
-Mar 29, 2013 12:30:19 AM Building riderFinished
+Mar 29, 2013 1:45:07 AM Elevator Exit
+INFO: Rider has exited onto floor 3
+Mar 29, 2013 1:45:07 AM Rider run
+INFO: Rider 3 will not fit on elevator, is calling again
+Mar 29, 2013 1:45:07 AM Rider run
+INFO: Rider 1 will not fit on elevator, is calling again
+Mar 29, 2013 1:45:07 AM Building riderFinished
 INFO: Number of finished riders is 1
+Mar 29, 2013 1:45:07 AM Elevator RequestFloor
+INFO: Floor 1 requested in Elevator
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 1 is calling up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 3 is calling up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 1 has called up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 3 has called up
+Mar 29, 2013 1:45:07 AM Elevator Exit
+INFO: Rider has exited onto floor 1
+Mar 29, 2013 1:45:07 AM Rider run
+INFO: Rider 1 will not fit on elevator, is calling again
+Mar 29, 2013 1:45:07 AM Building riderFinished
+INFO: Number of finished riders is 2
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 1 is calling up
+Mar 29, 2013 1:45:07 AM Rider callElevator
+INFO: Rider 1 has called up

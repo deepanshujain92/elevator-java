@@ -159,4 +159,9 @@ public class Elevator extends AbstractElevator implements Runnable {
 	public int distFromFloor(int fromFloor) {
 		return Math.abs(fromFloor-currentFloor);
 	}
+	
+	public boolean isGoingUp() {
+		return goingUp;
+	}
+	
 }
