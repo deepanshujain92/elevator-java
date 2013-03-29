@@ -39,6 +39,7 @@ public class ElevatorTester {
 					Integer.parseInt(BuildingParams[0]),
 					Integer.parseInt(BuildingParams[1]));
 			building.setLogger(logger);
+			
 			logger.info("building made");
 			
 			//Make Ending boolean
@@ -60,6 +61,8 @@ public class ElevatorTester {
 			logger.info("elevators made and started");
 			
 			// line is riderID, floor it's on, floor it wants to go to
+			ArrayList<Rider> riders = new ArrayList<Rider>();
+			int totalRiders = 0;
 			while (scanner.hasNextLine()) {
 				String info = scanner.nextLine();
 				String[] riderParams = info.split(" ");
@@ -68,6 +71,11 @@ public class ElevatorTester {
 						Integer.parseInt(riderParams[1]),
 						Integer.parseInt(riderParams[2]));
 				rider.setLogger(logger);
+				totalRiders++;
+				riders.add(rider);
+			}
+			building.setTotalRiders(totalRiders);
+			for (Rider rider : riders) {
 				new Thread(rider).start();
 			}
 			logger.info("riders made and started");

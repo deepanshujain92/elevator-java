@@ -90,7 +90,7 @@ public class Building extends AbstractBuilding {
 	 * Let's the building know how many riders must go through the building
 	 */
 	public void setTotalRiders(int totalRiders){
-		totalRiders = totalRiders;
+		this.totalRiders = totalRiders;
 	}
 	
 	/**
@@ -98,6 +98,7 @@ public class Building extends AbstractBuilding {
 	 */
 	public void riderFinished(){
 		finishedRiders++;
+		logger.log(Level.INFO, "Number of finished riders is {0}", finishedRiders);
 		if (finishedRiders == totalRiders) {
 			areRidersDone = true;
 			logger.log(Level.INFO, "Building says riders are finished");

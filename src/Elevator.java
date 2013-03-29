@@ -87,8 +87,9 @@ public class Elevator extends AbstractElevator implements Runnable {
 		currentOccupancy--;
 		//let barrier know you've crossed
 		try {
-			ExitBarriers[currentFloor][_elevatorId].complete();
 			logger.log(Level.INFO, "Rider has exited onto floor {0}", currentFloor);
+			ExitBarriers[currentFloor][_elevatorId].complete();
+		
 		}
 		catch (InterruptedException e){
 			e.printStackTrace();
@@ -98,12 +99,8 @@ public class Elevator extends AbstractElevator implements Runnable {
 
 	@Override
 	public void RequestFloor(int floor) {
-		// TODO Auto-generated method stub
 		ExitBarriers[floor][_elevatorId].arrive();
-
-
 		logger.log(Level.INFO, "Floor {0} requested in Elevator", floor);
-		
 		Exit();
 	}
 	
