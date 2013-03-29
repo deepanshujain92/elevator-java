@@ -67,6 +67,8 @@ public class ElevatorTester {
 		// }
 	}
 
+
+
 	public static void main(String args[]) {
 
 		// logger.info("Writing to a log file, nbd");
@@ -74,5 +76,7 @@ public class ElevatorTester {
 		new ElevatorTester("src/elevatorTestInput.txt");
 
 	}
-
+	
 }
+
+
