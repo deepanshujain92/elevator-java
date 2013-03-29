@@ -34,6 +34,8 @@ public class Building extends AbstractBuilding {
 				ExitBarriers[i][j] = new EventBarrier();
 			}
 		}
+		
+		areRidersDone = false;
 	}
 
 	@Override
@@ -102,18 +104,14 @@ public class Building extends AbstractBuilding {
 		if (finishedRiders == totalRiders) {
 			areRidersDone = true;
 			logger.log(Level.INFO, "Building says riders are finished");
+			for (Elevator e : myElevators){
+				e.setAreRidersDone(areRidersDone);
+			}
 		}
-	}
-	
-	public void setAreRidersDone(boolean areTheyDone){
-		areRidersDone = areTheyDone;
 	}
 	
 	public void setLogger (Logger l) {
 		logger = l;
 	}
 
-	public void elevatorArrive(Elevator elevator, int floor) {
-
-	}
 }

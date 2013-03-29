@@ -139,16 +139,6 @@ public class Elevator extends AbstractElevator implements Runnable {
 		logger = l;
 	}
 	
-	
-	
-	/**
-	 * Tells you whether riders have finished
-	 * @return
-	 */
-	public boolean areRidersDone(){
-		return areRidersDone;
-	}
-	
 	public void setAreRidersDone(boolean areTheyDone){
 		areRidersDone = areTheyDone;
 	}

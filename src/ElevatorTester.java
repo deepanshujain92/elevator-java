@@ -42,10 +42,6 @@ public class ElevatorTester {
 			
 			logger.info("building made");
 			
-			//Make Ending boolean
-			boolean areRidersDone = false;
-			building.setAreRidersDone(areRidersDone);
-			
 			//make elevators
 			for (int i = 0; i < Integer.parseInt(BuildingParams[1]); i++) {
 				Elevator elevator = new Elevator(
@@ -55,8 +51,7 @@ public class ElevatorTester {
 				ArrayList<Elevator> e = building.getElevators();
 				e.add(elevator);
 				building.shareBarriers(elevator);
-			    elevator.setAreRidersDone(areRidersDone);
-				new Thread(elevator).start();
+			    new Thread(elevator).start();
 			}
 			logger.info("elevators made and started");
 			
