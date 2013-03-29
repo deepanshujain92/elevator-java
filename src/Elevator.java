@@ -15,6 +15,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 	private EventBarrier currEntryBarrier;
 	private boolean doorsOpen;
 	private Logger logger;
+	private boolean areRidersDone;
 	
 	public Elevator(int numFloors, int elevatorId, int maxOccupancyThreshold) {
 		super(numFloors, elevatorId, maxOccupancyThreshold);
@@ -99,6 +100,8 @@ public class Elevator extends AbstractElevator implements Runnable {
 		// TODO Auto-generated method stub
 		ExitBarriers[floor][_elevatorId].arrive();
 		logger.log(Level.INFO, "Floor %d requested in Elevator", floor);
+		
+		Exit();
 	}
 	
 	public boolean areDoorsOpen(){
@@ -118,19 +121,36 @@ public class Elevator extends AbstractElevator implements Runnable {
 		// eventbarriers in elevator and in building
 		// logger.log(Level.INFO, "Current floor is ", currentFloor)
 		int nextFloor = 0;
-		if (goingUp && currentFloor < _numFloors | currentFloor == 1){
-			goingUp = true;
-			nextFloor = currentFloor + 1;
+		
+		while (!areRidersDone){
+			if (goingUp && currentFloor < _numFloors | currentFloor == 0){
+				goingUp = true;
+				nextFloor = currentFloor + 1;
+			}
+			else {
+				goingUp = false;
+				nextFloor = currentFloor - 1;
+			}
+			VisitFloor(nextFloor);
 		}
-		else {
-			goingUp = false;
-			nextFloor = currentFloor - 1;
-		}
-		VisitFloor(nextFloor);
 	}
 
 	public void setLogger(Logger l) {
 		logger = l;
+	}
+	
+	
+	
+	/**
+	 * Tells you whether riders have finished
+	 * @return
+	 */
+	public boolean areRidersDone(){
+		return areRidersDone;
+	}
+	
+	public void setAreRidersDone(boolean areTheyDone){
+		areRidersDone = areTheyDone;
 	}
 	
 	public int distFromFloor(int fromFloor) {

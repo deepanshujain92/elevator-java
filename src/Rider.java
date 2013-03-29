@@ -20,19 +20,22 @@ public class Rider implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		
+		Elevator myRide;
 		if (startFloor > endFloor){
-			building.CallDown(startFloor);
+			myRide = building.CallDown(startFloor);
 			logger.log(Level.INFO, "Rider %d has called down", riderID);
 		}
 		else{
-			building.CallUp(startFloor);
+			myRide = building.CallUp(startFloor);
 			logger.log(Level.INFO, "Rider %d has called up", riderID);
 		}
 		
 		//call enter() on elevator
-		//call requestFloor(endFloor)
-		//call 
-
+		myRide.Enter();
+		myRide.RequestFloor(endFloor);
+ 
+		building.riderFinished();
 	}
 	
 	public void setLogger(Logger l) {
