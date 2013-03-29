@@ -26,9 +26,9 @@ public class Rider implements Runnable {
 		
 		//call enter() on elevator, enter if not full
 		while (!myRide.Enter()){
-			while(myRide.areDoorsOpen()){
+			/*while(myRide.areDoorsOpen()){
 				continue;
-			}
+			}*/
 			myRide = callElevator();
 		}
 		myRide.RequestFloor(endFloor);
