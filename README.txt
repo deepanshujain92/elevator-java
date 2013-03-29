@@ -98,9 +98,11 @@ is going in the wrong direction and opens an eventbarrier different than the one
 is waiting at, but might fix itself when the elevator leaves and returns going in the correct
 direction. This is also a problem when two elevators are at the same floor and working
 with the same event barrier, at least that's what we think. This bug does not appear with any
-regularity, so it's hard to figure out exactly what the problem is.
+regularity, so it's hard to figure out exactly what the problem is. 
 
-Also important to note is that floors and elevator indices start at 0 and go until numObject-1.
+For the sake of the jar file, our included sample input only includes one elevator to ensure
+that it works. Also important to note is that floors and elevator indices start at 0 and go 
+until numObject-1.
 
 /************************
  * Feedback on the lab
