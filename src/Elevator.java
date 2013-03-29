@@ -66,6 +66,12 @@ public class Elevator extends AbstractElevator implements Runnable {
 	public boolean Enter() {
 		//don't enter if elevator full
 		if(currentOccupancy == _maxOccupancyThreshold){
+			try{
+				currEntryBarrier.complete();
+			}
+			catch (InterruptedException e){
+				e.printStackTrace();
+			}
 			return false;
 		}
 		//if not full, enter and increase occupancy, and let barrier know you've crossed

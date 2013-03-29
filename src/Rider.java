@@ -22,6 +22,22 @@ public class Rider implements Runnable {
 		// TODO Auto-generated method stub
 		
 		Elevator myRide;
+		myRide = callElevator();
+		
+		//call enter() on elevator, enter if not full
+		while (!myRide.Enter()){
+			while(myRide.areDoorsOpen()){
+				continue;
+			}
+			myRide = callElevator();
+		}
+		myRide.RequestFloor(endFloor);
+ 
+		building.riderFinished();
+	}
+
+	private Elevator callElevator() {
+		Elevator myRide;
 		if (startFloor > endFloor){
 			logger.log(Level.INFO, "Rider {0} is calling down", riderID);
 			myRide = building.CallDown(startFloor);
@@ -33,12 +49,7 @@ public class Rider implements Runnable {
 			logger.log(Level.INFO, "Rider {0} has called up", riderID);
 
 		}
-		
-		//call enter() on elevator
-		myRide.Enter();
-		myRide.RequestFloor(endFloor);
- 
-		building.riderFinished();
+		return myRide;
 	}
 	
 	public void setLogger(Logger l) {
