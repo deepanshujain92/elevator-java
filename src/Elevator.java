@@ -31,6 +31,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 		
 		doorsOpen = false;
 		currentOccupancy = 0;
+		areRidersDone=false;
 	}
 
 	@Override
@@ -139,6 +140,8 @@ public class Elevator extends AbstractElevator implements Runnable {
 			}
 			VisitFloor(nextFloor);
 		}
+		return;
+		
 	}
 
 	public void setLogger(Logger l) {
