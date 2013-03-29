@@ -105,7 +105,6 @@ public class Building extends AbstractBuilding {
 			areRidersDone = true;
 			logger.log(Level.INFO, "Building says riders are finished");
 			for (Elevator e : myElevators){
-				
 				e.setAreRidersDone(areRidersDone);
 			}
 		}
