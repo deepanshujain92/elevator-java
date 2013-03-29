@@ -130,12 +130,16 @@ public class Elevator extends AbstractElevator implements Runnable {
 		int nextFloor = 0;
 		
 		while (!areRidersDone){
-			if ((goingUp && currentFloor < _numFloors-1) | currentFloor == 0){
-				goingUp = true;
+			if (goingUp) {
+				if (currentFloor == _numFloors-2){
+					goingUp=false;
+				}
 				nextFloor = currentFloor + 1;
 			}
 			else {
-				goingUp = false;
+				if (currentFloor == 1){
+					goingUp = true;
+				}
 				nextFloor = currentFloor - 1;
 			}
 			VisitFloor(nextFloor);

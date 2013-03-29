@@ -45,6 +45,12 @@ public class Building extends AbstractBuilding {
 		return closestElevator(fromFloor);
 
 	}
+	
+	@Override
+	public Elevator CallDown(int fromFloor) {
+		DownCalls[fromFloor].arrive();
+		return closestElevator(fromFloor);
+	}
 
 	/**
 	 * Returns the closest elevator to a given floor
@@ -67,11 +73,7 @@ public class Building extends AbstractBuilding {
 		return null;
 	}
 
-	@Override
-	public Elevator CallDown(int fromFloor) {
-		DownCalls[fromFloor].arrive();
-		return closestElevator(fromFloor);
-	}
+
 
 	public void setBarriers(EventBarrier[] Up, EventBarrier[] Down,
 			EventBarrier[][] Exits) {
