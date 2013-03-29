@@ -15,7 +15,17 @@ public class ElevatorTester {
 
 	public ElevatorTester(String filename) {
 		Path path = Paths.get(filename);
-		logger = Logger.getLogger("Elevator.log");
+		logger = Logger.getLogger("Elevator");
+		try {
+			FileHandler fh = new FileHandler("src/Elevator.log");
+			logger.addHandler(fh);
+			SimpleFormatter sf = new SimpleFormatter();
+			fh.setFormatter(sf);
+		} catch (SecurityException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		isDone = false;
 
