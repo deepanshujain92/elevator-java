@@ -24,11 +24,12 @@ public class Rider implements Runnable {
 		Elevator myRide;
 		if (startFloor > endFloor){
 			myRide = building.CallDown(startFloor);
-			logger.log(Level.INFO, "Rider %d has called down", riderID);
+			logger.log(Level.INFO, "Rider {0} has called down", riderID);
 		}
 		else{
 			myRide = building.CallUp(startFloor);
-			logger.log(Level.INFO, "Rider %d has called up", riderID);
+			logger.log(Level.INFO, "Rider {0} has called up", riderID);
+
 		}
 		
 		//call enter() on elevator

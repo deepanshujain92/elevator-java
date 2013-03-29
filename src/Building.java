@@ -9,6 +9,9 @@ public class Building extends AbstractBuilding {
 	private ArrayList<Elevator> myElevators;
 
 	private ArrayList<ArrayList<Rider>> Riders;
+	private int finishedRiders;
+	private int totalRiders;
+	private boolean areRidersDone;
 
 	public Building(int numFloors, int numElevators) {
 		super(numFloors, numElevators);
@@ -38,6 +41,11 @@ public class Building extends AbstractBuilding {
 
 	}
 
+	/**
+	 * Returns the closest elevator to a given floor
+	 * @param fromFloor 
+	 * @return Returns the closest elevator to a given floor
+	 */
 	private Elevator closestElevator(int fromFloor) {
 		// int[] dists = new int[myElevators.size()];
 		int i = Integer.MAX_VALUE;
@@ -74,6 +82,29 @@ public class Building extends AbstractBuilding {
 	public ArrayList<Elevator> getElevators() {
 		return myElevators;
 	}
+	
+	/**
+	 * Let's the building know how many riders must go through the building
+	 */
+	public void setTotalRiders(int totalRiders){
+		totalRiders = totalRiders;
+	}
+	
+	/**
+	 * Let the building know another rider has finished
+	 */
+	public void riderFinished(){
+		finishedRiders++;
+		if (finishedRiders == totalRiders) {
+			areRidersDone = true;
+		}
+	}
+	
+	public void setAreRidersDone(boolean areTheyDone){
+		areRidersDone = areTheyDone;
+	}
+	
+
 
 	public void elevatorArrive(Elevator elevator, int floor) {
 

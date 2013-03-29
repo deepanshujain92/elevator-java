@@ -39,6 +39,12 @@ public class ElevatorTester {
 					Integer.parseInt(BuildingParams[0]),
 					Integer.parseInt(BuildingParams[1]));
 			logger.info("building made");
+			
+			//Make Ending boolean
+			boolean areRidersDone = false;
+			building.setAreRidersDone(areRidersDone);
+			
+			//make elevators
 			for (int i = 0; i < Integer.parseInt(BuildingParams[1]); i++) {
 				Elevator elevator = new Elevator(
 						Integer.parseInt(BuildingParams[0]), i,
@@ -47,9 +53,14 @@ public class ElevatorTester {
 				ArrayList<Elevator> e = building.getElevators();
 				e.add(elevator);
 				building.shareBarriers(elevator);
+			    elevator.setAreRidersDone(areRidersDone);
 				new Thread(elevator).start();
 			}
 			logger.info("elevators made and started");
+			
+
+			
+			
 			// line is riderID, floor it's on, floor it wants to go to
 			while (scanner.hasNextLine()) {
 				String info = scanner.nextLine();

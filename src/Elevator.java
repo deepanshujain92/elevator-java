@@ -57,7 +57,7 @@ public class Elevator extends AbstractElevator implements Runnable {
 		else {
 			currEntryBarrier = DownCalls[currentFloor];
 		}
-		logger.log(Level.INFO, "Elevator at floor %d", floor);
+		logger.log(Level.INFO, "Elevator at floor {0}", floor);
 		OpenDoors();
 		CloseDoors();
 	}
@@ -99,7 +99,9 @@ public class Elevator extends AbstractElevator implements Runnable {
 	public void RequestFloor(int floor) {
 		// TODO Auto-generated method stub
 		ExitBarriers[floor][_elevatorId].arrive();
-		logger.log(Level.INFO, "Floor %d requested in Elevator", floor);
+
+
+		logger.log(Level.INFO, "Floor {0} requested in Elevator", floor);
 		
 		Exit();
 	}

@@ -1,8 +1,8 @@
-Mar 28, 2013 9:27:18 PM ElevatorTester <init>
+Mar 28, 2013 9:38:05 PM ElevatorTester <init>
 INFO: building made
-Mar 28, 2013 9:27:18 PM ElevatorTester <init>
+Mar 28, 2013 9:38:05 PM ElevatorTester <init>
 INFO: elevators made and started
-Mar 28, 2013 9:27:18 PM Elevator VisitFloor
-INFO: Elevator at floor %d
-Mar 28, 2013 9:27:18 PM ElevatorTester <init>
+Mar 28, 2013 9:38:05 PM Elevator VisitFloor
+INFO: Elevator at floor [%d]
+Mar 28, 2013 9:38:05 PM ElevatorTester <init>
 INFO: riders made and started
